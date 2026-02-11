@@ -1,0 +1,38 @@
+# ===== .NET =====
+bin/
+obj/
+*.user
+*.suo
+*.db
+*.sqlite
+*.pdb
+*.cache
+.vs/
+
+# ===== Rider / VSCode =====
+.idea/
+.vscode/
+
+# ===== Angular / Node =====
+node_modules/
+dist/
+.angular/
+coverage/
+
+# ===== Logs =====
+*.log
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Env files =====
+appsettings.Development.json
+appsettings.Local.json
+environment.ts
+environment.development.ts
+
+
+*.db
+*.db-shm
+*.db-wal
