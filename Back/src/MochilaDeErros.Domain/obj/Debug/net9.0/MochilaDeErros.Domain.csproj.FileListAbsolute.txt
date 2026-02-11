@@ -1,0 +1,11 @@
+E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\obj\Debug\net9.0\MochilaDeErros.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\obj\Debug\net9.0\MochilaDeErros.Domain.AssemblyInfoInputs.cache
+E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\obj\Debug\net9.0\MochilaDeErros.Domain.AssemblyInfo.cs
+E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\obj\Debug\net9.0\MochilaDeErros.Domain.csproj.CoreCompileInputs.cache
+E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\bin\Debug\net9.0\MochilaDeErros.Domain.deps.json
+E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\bin\Debug\net9.0\MochilaDeErros.Domain.dll
+E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\bin\Debug\net9.0\MochilaDeErros.Domain.pdb
+E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\obj\Debug\net9.0\MochilaDeErros.Domain.dll
+E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\obj\Debug\net9.0\refint\MochilaDeErros.Domain.dll
+E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\obj\Debug\net9.0\MochilaDeErros.Domain.pdb
+E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\obj\Debug\net9.0\ref\MochilaDeErros.Domain.dll
