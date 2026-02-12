@@ -18,6 +18,7 @@ builder.Services.AddScoped<GetQuestoesByMochilaUseCase>();
 builder.Services.AddScoped<GetQuestaoByIdUseCase>();
 builder.Services.AddScoped<UpdateQuestaoUseCase>();
 builder.Services.AddScoped<ResponderQuestaoUseCase>();
+builder.Services.AddScoped<GetProximaQuestaoUseCase>();
 
 
 var app = builder.Build();

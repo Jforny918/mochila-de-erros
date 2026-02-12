@@ -26,4 +26,15 @@ public class QuestoesController : ControllerBase
         var result = await useCase.ExecuteAsync(mochilaId);
         return Ok(result);
     }
+
+    [HttpGet("/api/mochilas/{mochilaId:guid}/questoes/proxima")]
+    public async Task<IActionResult> GetProximaQuestao(
+        Guid mochilaId,
+        [FromServices] GetProximaQuestaoUseCase useCase)
+    {
+        var result = await useCase.ExecuteAsync(mochilaId);
+        if (result is null) return NoContent();
+
+        return Ok(result);
+    }
 }

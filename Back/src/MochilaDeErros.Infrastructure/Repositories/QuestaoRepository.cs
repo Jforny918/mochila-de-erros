@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using MochilaDeErros.Application.Interfaces.Repositories;
 using MochilaDeErros.Domain.Entities;
 using MochilaDeErros.Infrastructure.Persistence;
+using MochilaDeErros.Domain.Enums;
 
 namespace MochilaDeErros.Infrastructure.Repositories;
 
@@ -49,9 +50,21 @@ public class QuestaoRepository : IQuestaoRepository
     }
 
     public async Task UpdateAsync(Questao questao)
-{
-    _context.Questoes.Update(questao);
-    await _context.SaveChangesAsync();
-}
+    {
+        _context.Questoes.Update(questao);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task<Questao?> GetProximaQuestaoAsync(Guid mochilaId)
+    {
+        return await _context.Questoes
+            .Include(q => q.Alternativas)
+            .Where(q =>
+                q.MochilaId == mochilaId && q.Status == StatusQuestao.Pendente &&
+                (q.BloqueadaAte == null || q.BloqueadaAte <= DateTime.UtcNow)
+                )
+                .OrderBy(q => q.Id)
+                .FirstOrDefaultAsync();
+    }
 
 }
