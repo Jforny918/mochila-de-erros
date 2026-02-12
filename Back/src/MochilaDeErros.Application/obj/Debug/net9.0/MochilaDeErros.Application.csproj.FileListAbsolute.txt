@@ -13,3 +13,4 @@ E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Application\obj\Debug\net9
 E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Application\obj\Debug\net9.0\refint\MochilaDeErros.Application.dll
 E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Application\obj\Debug\net9.0\MochilaDeErros.Application.pdb
 E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Application\obj\Debug\net9.0\ref\MochilaDeErros.Application.dll
+E:\programacao\MochilaDeErros\back\src\MochilaDeErros.Application\obj\Debug\net9.0\MochilaDeErros.Application.sourcelink.json

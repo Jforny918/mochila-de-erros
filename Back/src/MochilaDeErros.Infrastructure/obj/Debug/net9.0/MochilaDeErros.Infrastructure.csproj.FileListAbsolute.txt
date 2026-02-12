@@ -17,3 +17,4 @@ E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Infrastructure\obj\Debug\n
 E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Infrastructure\obj\Debug\net9.0\ref\MochilaDeErros.Infrastructure.dll
 E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Infrastructure\bin\Debug\net9.0\MochilaDeErros.Infrastructure.runtimeconfig.json
 E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Infrastructure\obj\Debug\net9.0\MochilaDeErros.Infrastructure.genruntimeconfig.cache
+E:\programacao\MochilaDeErros\back\src\MochilaDeErros.Infrastructure\obj\Debug\net9.0\MochilaDeErros.Infrastructure.sourcelink.json

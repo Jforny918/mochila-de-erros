@@ -9,3 +9,4 @@ E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\obj\Debug\net9.0\Mo
 E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\obj\Debug\net9.0\refint\MochilaDeErros.Domain.dll
 E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\obj\Debug\net9.0\MochilaDeErros.Domain.pdb
 E:\programacao\MochilaDeErros\Back\src\MochilaDeErros.Domain\obj\Debug\net9.0\ref\MochilaDeErros.Domain.dll
+E:\programacao\MochilaDeErros\back\src\MochilaDeErros.Domain\obj\Debug\net9.0\MochilaDeErros.Domain.sourcelink.json

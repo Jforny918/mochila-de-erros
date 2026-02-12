@@ -17,7 +17,22 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        modelBuilder.Entity<Questao>(builder =>
+    {
+        builder.HasKey(q => q.Id);
+
+        builder.Property(q => q.MochilaId)
+               .IsRequired();
+
+        builder.HasMany(q => q.Alternativas)
+               .WithOne()
+               .HasForeignKey(a => a.QuestaoId)
+               .OnDelete(DeleteBehavior.Cascade);
+    });
+
+    modelBuilder.Entity<Alternativa>(builder =>
+    {
+        builder.HasKey(a => a.Id);
+    });
     }
 }

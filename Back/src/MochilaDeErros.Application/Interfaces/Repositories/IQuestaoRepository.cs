@@ -1,5 +1,4 @@
 using MochilaDeErros.Domain.Entities;
-
 namespace MochilaDeErros.Application.Interfaces.Repositories;
 
 public interface IQuestaoRepository
@@ -10,5 +9,6 @@ public interface IQuestaoRepository
     Task<Questao?> GetByIdAsync(Guid id);
     Task UpdateAsync(Questao questao);
     Task SaveChangesAsync();
+    Task<Questao?> GetProximaQuestaoAsync(Guid mochilaId);
 
 }
