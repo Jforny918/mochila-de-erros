@@ -1,36 +1,58 @@
-# ===== .NET =====
-bin/
-obj/
+####################################
+# ===== GLOBAL / IDE =====
+####################################
+.vs/
+.vscode/
+.idea/
 *.user
 *.suo
-*.db
-*.sqlite
-*.pdb
 *.cache
-.vs/
+*.log
+*.pdb
 
-# ===== Rider / VSCode =====
-.idea/
-.vscode/
+####################################
+# ===== OS =====
+####################################
+.DS_Store
+Thumbs.db
 
-# ===== Angular / Node =====
+####################################
+# ===== .NET / BACKEND =====
+####################################
+**/bin/
+**/obj/
+
+# SQLite / Local DB
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+
+# EF Core
+**/Migrations/*.Designer.cs
+**/Migrations/*.csproj.user
+
+# App settings locais
+appsettings.Development.json
+appsettings.Local.json
+
+####################################
+# ===== ANGULAR / FRONTEND =====
+####################################
 node_modules/
 dist/
 .angular/
 coverage/
 
-# ===== Logs =====
-*.log
-
-# ===== OS =====
-.DS_Store
-Thumbs.db
-
-# ===== Env files =====
-appsettings.Development.json
-appsettings.Local.json
+# Angular envs locais
 environment.ts
 environment.development.ts
+
+####################################
+# ===== TEST / TEMP =====
+####################################
+*.http
+
 
 
 *.db
@@ -46,3 +68,10 @@ obj/
 *.pdb
 *.cache
 .vs/
+*.http
+node_modules/
+dist/
+.angular/
+coverage/
+environment.ts
+environment.development.ts

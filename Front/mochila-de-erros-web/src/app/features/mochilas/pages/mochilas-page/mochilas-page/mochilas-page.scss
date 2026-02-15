@@ -1,0 +1,15 @@
+.titulo {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.2rem;
+}
+
+.estado {
+  padding: 2rem;
+  color: #777;
+}

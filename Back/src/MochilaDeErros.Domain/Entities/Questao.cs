@@ -52,6 +52,8 @@ public class Questao
         _alternativas.Add(new Alternativa(Id, letra, texto, ehCorreta));
     }
 
+    
+
     public void FinalizarCadastro()
     {
         if (_alternativas.Count < 2)
@@ -103,4 +105,62 @@ public class Questao
         Status = StatusQuestao.Bloqueada;
         BloqueadaAte = DateTime.UtcNow.Add(tempo);
     }
+
+    public void EditarConteudo(
+        string enunciado,
+        string? explicacao,
+        string? origem,
+        string? imagemUrl
+    )
+    {
+        if (string.IsNullOrWhiteSpace(enunciado))
+            throw new DomainException("O enunciado é obrigatório.");
+
+        Enunciado = enunciado;
+        Explicacao = explicacao;
+        Origem = origem;
+        ImagemUrl = imagemUrl;
+    }
+
+    public void AtualizarAlternativas(
+    IEnumerable<(string Letra, string Texto, bool EhCorreta)> novasAlternativas)
+{
+    if (_fechadaParaEdicao)
+        throw new DomainException("A questão não pode mais ser editada.");
+
+    if (novasAlternativas.Count() < 2)
+        throw new DomainException("A questão deve ter pelo menos duas alternativas.");
+
+    if (novasAlternativas.Count(a => a.EhCorreta) != 1)
+        throw new DomainException("A questão deve ter exatamente uma alternativa correta.");
+
+    var letrasNovas = novasAlternativas.Select(a => a.Letra).ToHashSet();
+
+    var paraRemover = _alternativas
+        .Where(a => !letrasNovas.Contains(a.Letra))
+        .ToList();
+
+    foreach (var alt in paraRemover)
+        _alternativas.Remove(alt);
+
+    foreach (var nova in novasAlternativas)
+    {
+        var existente = _alternativas.FirstOrDefault(a => a.Letra == nova.Letra);
+
+        if (existente is not null)
+        {
+            existente.Atualizar(nova.Texto, nova.EhCorreta);
+        }
+        else
+        {
+            _alternativas.Add(new Alternativa(
+                Id,
+                nova.Letra,
+                nova.Texto,
+                nova.EhCorreta
+            ));
+        }
+    }
+}
+
 }

@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="topo" [style.background]="card.cor"></div>
+
+  <div class="conteudo">
+    <h2>{{ card.nome }}</h2>
+    <p class="descricao">{{ card.descricao }}</p>
+
+    <div class="tags">
+      <span class="tag" *ngFor="let tag of card.tags">
+        {{ tag }}
+      </span>
+    </div>
+
+    <div class="stats">
+      <div>
+        <strong>{{ card.totalQuestoes }}</strong>
+        <span>Total</span>
+      </div>
+      <div class="pendente">
+        <strong>{{ card.pendentes }}</strong>
+        <span>Pendentes</span>
+      </div>
+      <div class="dominada">
+        <strong>{{ card.dominadas }}</strong>
+        <span>Dominadas</span>
+      </div>
+    </div>
+
+    <div class="periodo">
+      {{ card.periodoRevisao }}
+    </div>
+
+    <button class="acao" [disabled]="card.bloqueada">
+      ▶ Estudar
+    </button>
+  </div>
+</div>

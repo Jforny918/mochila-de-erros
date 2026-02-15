@@ -1,0 +1,17 @@
+
+<h1 class="titulo">Minhas Mochilas</h1>
+
+<div *ngIf="carregando" class="estado">
+  Carregando mochilas...
+</div>
+
+<div *ngIf="!carregando && mochilas.length === 0" class="estado">
+  Mochilas não carregadas
+</div>
+
+<div class="grid" *ngIf="!carregando && mochilas.length > 0">
+  <app-mochila-card
+    *ngFor="let mochila of mochilas"
+    [card]="mochila">
+  </app-mochila-card>
+</div>

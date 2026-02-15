@@ -1,0 +1,92 @@
+.card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.topo {
+  height: 6px;
+}
+
+.conteudo {
+  padding: 1rem;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.descricao {
+  font-size: 0.85rem;
+  color: #666;
+  margin: .25rem 0 .75rem;
+}
+
+.tags {
+  display: flex;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: #eef2ff;
+  color: #3f51b5;
+  padding: .15rem .5rem;
+  border-radius: 10px;
+  font-size: .7rem;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  text-align: center;
+
+  div {
+    flex: 1;
+  }
+
+  strong {
+    display: block;
+    font-size: 1.2rem;
+  }
+
+  span {
+    font-size: .7rem;
+    color: #777;
+  }
+}
+
+.pendente strong {
+  color: #f59e0b;
+}
+
+.dominada strong {
+  color: #10b981;
+}
+
+.periodo {
+  font-size: .75rem;
+  color: #666;
+  margin-bottom: .75rem;
+}
+
+.acao {
+  width: 100%;
+  border: none;
+  padding: .6rem;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+}

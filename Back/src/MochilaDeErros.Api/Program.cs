@@ -1,6 +1,7 @@
 using MochilaDeErros.Application.UseCases.Mochilas;
 using MochilaDeErros.Infrastructure.DependencyInjection;
-using MochilaDeErros.Application.UseCases.Questoes;
+using MochilaDeErros.Application.Interfaces.Repositories;
+using MochilaDeErros.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,18 +9,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddInfrastructure("Data Source=mochila.db");
-builder.Services.AddScoped<CreateMochilaUseCase>();
-builder.Services.AddScoped<GetMochilasUseCase>();
-builder.Services.AddScoped<GetMochilaByIdUseCase>();
+builder.Services.AddScoped<GetMochilasByUserIdUseCase>();
 
-builder.Services.AddScoped<CreateQuestaoUseCase>();
-builder.Services.AddScoped<GetQuestoesByMochilaUseCase>();
-builder.Services.AddScoped<GetQuestaoByIdUseCase>();
-builder.Services.AddScoped<UpdateQuestaoUseCase>();
-builder.Services.AddScoped<ResponderQuestaoUseCase>();
-builder.Services.AddScoped<GetProximaQuestaoUseCase>();
+builder.Services.AddInfrastructure(builder.Configuration);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Front",
+        p => p
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+    );
+});
 
 var app = builder.Build();
 
@@ -31,4 +33,5 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 app.MapControllers();
+app.UseCors("Front");
 app.Run();

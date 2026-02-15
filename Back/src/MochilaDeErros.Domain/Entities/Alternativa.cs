@@ -19,4 +19,10 @@ public class Alternativa
         Texto = texto;
         EhCorreta = ehCorreta;
     }
+
+    public void Atualizar(string texto, bool ehCorreta)
+    {
+        Texto = texto;
+        EhCorreta = ehCorreta;
+    }
 }

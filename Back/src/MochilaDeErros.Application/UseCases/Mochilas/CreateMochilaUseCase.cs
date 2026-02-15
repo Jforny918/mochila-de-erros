@@ -1,21 +1,22 @@
-using MochilaDeErros.Application.DTOs.Mochilas;
-using MochilaDeErros.Application.Interfaces.Repositories;
+using MochilaDeErros.Application.Interfaces.Repositories.Write;
 using MochilaDeErros.Domain.Entities;
+using MochilaDeErros.Application.DTOs.Mochilas;
 
 namespace MochilaDeErros.Application.UseCases.Mochilas;
 
 public class CreateMochilaUseCase
 {
-    private readonly IMochilaRepository _repository;
+    private readonly IMochilaWriteRepository _repository;
 
-    public CreateMochilaUseCase(IMochilaRepository repository)
+    public CreateMochilaUseCase(IMochilaWriteRepository repository)
     {
         _repository = repository;
     }
 
     public async Task<Guid> ExecuteAsync(CreateMochilaRequest request)
     {
-        var mochila = new Mochila(
+        var mochila = new Mochila
+        (
             request.UserId,
             request.Nome,
             request.Cor,
@@ -24,9 +25,13 @@ public class CreateMochilaUseCase
         );
 
         foreach (var tag in request.Tags)
+        {
             mochila.AdicionarTag(tag);
+        }
 
         await _repository.AddAsync(mochila);
+        await _repository.SaveChangesAsync();
+
         return mochila.Id;
     }
 }
