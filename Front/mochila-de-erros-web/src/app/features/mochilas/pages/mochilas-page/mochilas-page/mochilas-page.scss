@@ -1,15 +1,30 @@
+main {
+  padding: 2.5rem;
+}
+
 .titulo {
   font-size: 1.6rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fill, 320px);
+  gap: 1.5rem;
+  justify-content: flex-start;
 }
 
 .estado {
   padding: 2rem;
   color: #777;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 1.5rem;
+  }
+
+  .grid {
+    justify-content: center;
+  }
 }

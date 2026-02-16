@@ -1,10 +1,17 @@
 .card {
+  width: 320px;
   background: #fff;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
   display: flex;
   flex-direction: column;
+  transition: transform .2s ease, box-shadow .2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0,0,0,.12);
+  }
 }
 
 .topo {
@@ -12,38 +19,44 @@
 }
 
 .conteudo {
-  padding: 1rem;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 h2 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   margin: 0;
 }
 
 .descricao {
-  font-size: 0.85rem;
+  font-size: .8rem;
   color: #666;
   margin: .25rem 0 .75rem;
+  min-height: 34px;
 }
 
 .tags {
   display: flex;
   gap: .4rem;
   flex-wrap: wrap;
+  margin-bottom: .75rem;
 }
 
 .tag {
   background: #eef2ff;
-  color: #3f51b5;
-  padding: .15rem .5rem;
-  border-radius: 10px;
+  color: #4338ca;
+  padding: .15rem .55rem;
+  border-radius: 999px;
   font-size: .7rem;
+  font-weight: 500;
 }
 
 .stats {
   display: flex;
   justify-content: space-between;
-  margin: 1rem 0;
+  margin: .75rem 0;
   text-align: center;
 
   div {
@@ -52,7 +65,7 @@ h2 {
 
   strong {
     display: block;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
 
   span {
@@ -76,11 +89,11 @@ h2 {
 }
 
 .acao {
+  margin-top: auto;
   width: 100%;
   border: none;
   padding: .6rem;
-  border-radius: 8px;
-  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  border-radius: 10px;
   color: #fff;
   font-weight: 600;
   cursor: pointer;

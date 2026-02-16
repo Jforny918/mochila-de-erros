@@ -30,7 +30,7 @@
       {{ card.periodoRevisao }}
     </div>
 
-    <button class="acao" [disabled]="card.bloqueada">
+    <button class="acao" [style.background]="card.cor" [disabled]="card.bloqueada">
       ▶ Estudar
     </button>
   </div>
