@@ -72,4 +72,10 @@ public class MochilaReadRepository : IMochilaReadRepository
             _ => "Indefinido"
         };
     }
+
+    public async Task<bool> ExistsByUserAsync(Guid userId, Guid mochilaId)
+    {
+        return await _context.Mochilas.AsNoTracking()
+            .AnyAsync(m => m.Id == mochilaId && m.UserId == userId && m.Ativa);
+    }
 }

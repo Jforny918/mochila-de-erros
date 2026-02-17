@@ -10,6 +10,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<GetMochilasByUserIdUseCase>();
+builder.Services.AddScoped<GetMochilaCardsByUserIdUseCase>();
+builder.Services.AddScoped<CreateQuestaoUseCase>();
 
 builder.Services.AddInfrastructure(builder.Configuration);
 

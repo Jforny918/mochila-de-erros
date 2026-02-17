@@ -7,6 +7,8 @@ using MochilaDeErros.Infrastructure.Repositories.Read;
 using MochilaDeErros.Application.Interfaces.Repositories.Write;
 using MochilaDeErros.Infrastructure.Repositories.Write;
 using MochilaDeErros.Application.UseCases.Mochilas;
+using MochilaDeErros.Application.UseCases.Questoes;
+using MochilaDeErros.Application.Interfaces.Repositories;
 
 namespace MochilaDeErros.Infrastructure.DependencyInjection;
 
@@ -24,8 +26,13 @@ public static class InfrastructureExtensions
 
         services.AddScoped<IMochilaReadRepository, MochilaReadRepository>();
         services.AddScoped<IMochilaWriteRepository, MochilaWriteRepository>();
+        services.AddScoped<IQuestaoWriteRepository, QuestaoWriteRepository>();
+        services.AddScoped<IQuestaoReadRepository, QuestaoReadRepository>();
         services.AddScoped<GetMochilaCardsByUserIdUseCase>();
         services.AddScoped<CreateMochilaUseCase>();
+        services.AddScoped<IQuestaoReadRepository, QuestaoReadRepository>();
+        services.AddScoped<GetQuestoesCardsByMochilaIdUseCase>();
+        services.AddScoped<CreateQuestaoUseCase>();
 
         return services;
     }

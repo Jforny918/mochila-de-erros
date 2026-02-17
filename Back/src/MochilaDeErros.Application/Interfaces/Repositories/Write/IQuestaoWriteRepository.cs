@@ -1,5 +1,6 @@
 using MochilaDeErros.Domain.Entities;
-namespace MochilaDeErros.Application.Interfaces.Repositories;
+
+namespace MochilaDeErros.Application.Interfaces.Repositories.Write;
 
 public interface IQuestaoWriteRepository
 {
