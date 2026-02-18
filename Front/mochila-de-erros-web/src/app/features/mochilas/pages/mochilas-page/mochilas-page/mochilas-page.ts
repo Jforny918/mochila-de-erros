@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { MochilaCard } from '../../../models/mochilas-card.model';
 import { MochilasService } from '../../../services/mochilas.service';
 import { MochilaCardComponent } from '../../../components/mochila-card/mochila-card';
+import { CriarMochilaModal  } from '../../../components/criar-mochila-modal/criar-mochila-modal';
 import { CommonModule } from '@angular/common';
 import { Rodape } from '../../../components/rodape/rodape';
 
 @Component({
   selector: 'app-mochilas-page',
   imports: [MochilaCardComponent,
-    CommonModule, Rodape
+    CommonModule, Rodape, CriarMochilaModal
   ],
   templateUrl: './mochilas-page.html',
   styleUrl: './mochilas-page.scss',
