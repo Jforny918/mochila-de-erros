@@ -2,13 +2,15 @@
   <div class="topo" [style.background]="card.cor"></div>
 
   <div class="conteudo">
-    <h2>{{ card.nome }}</h2>
-    <p class="descricao">{{ card.descricao }}</p>
+    <div class="info">
+      <h2>{{ card.nome }}</h2>
+      <p class="descricao">{{ card.descricao }}</p>
 
-    <div class="tags">
-      <span class="tag" *ngFor="let tag of card.tags">
-        {{ tag }}
-      </span>
+      <div class="tags">
+        <span class="tag" *ngFor="let tag of card.tags">
+          {{ tag }}
+        </span>
+      </div>
     </div>
 
     <div class="stats">
@@ -30,8 +32,27 @@
       {{ card.periodoRevisao }}
     </div>
 
-    <button class="acao" [style.background]="card.cor" (click)="$event.stopPropagation()">
-      ▶ Estudar
-    </button>
+    <div class="acoes">
+      <button
+        class="acao"
+        [style.background]="card.cor"
+        (click)="$event.stopPropagation()">
+        ▶ Estudar
+      </button>
+
+      <button
+        class="icone"
+        title="Compartilhar"
+        (click)="$event.stopPropagation()">
+        🔗
+      </button>
+
+      <button
+        class="icone"
+        title="Configurações"
+        (click)="$event.stopPropagation()">
+        ⚙
+      </button>
+    </div>
   </div>
 </div>

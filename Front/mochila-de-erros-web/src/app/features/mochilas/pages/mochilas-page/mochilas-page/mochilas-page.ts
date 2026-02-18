@@ -6,11 +6,18 @@ import { CommonModule } from '@angular/common';
 import { Rodape } from '../../../components/rodape/rodape';
 import { CriarMochilaModal } from '../../../components/criar-mochila-modal/criar-mochila-modal';
 import { FormsModule } from '@angular/forms';
+import { UsoPlano } from '../../../models/uso-plano.model';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-mochilas-page',
-  imports: [MochilaCardComponent,
-    CommonModule, Rodape, CriarMochilaModal, FormsModule],
+  imports: [
+    MochilaCardComponent,
+    CommonModule, 
+    Rodape, 
+    CriarMochilaModal, 
+    FormsModule
+  ],
   templateUrl: './mochilas-page.html',
   styleUrl: './mochilas-page.scss',
 })
@@ -20,10 +27,13 @@ export class MochilasPage {
 
     modalAberto = false;
 
+    usoPlano?: UsoPlano;
+    planoLabel = 'gratuito';
+
     // temporário, depois substituir por ID do usuário logado
     private userId = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
 
-    constructor(private mochilasService: MochilasService) {}
+    constructor(private mochilasService: MochilasService, private usuarioService: UsuarioService) {}
 
     carregarMochilas(){
       this.mochilasService.getCards(this.userId).subscribe({
@@ -39,6 +49,16 @@ export class MochilasPage {
 
     ngOnInit(): void {
       this.carregarMochilas();
+      this.carregarUsoPlano();
+    }
+
+    carregarUsoPlano(){
+      this.usuarioService
+        .getUsoPlano(this.userId)
+        .subscribe(data => {
+          this.usoPlano = data;
+          this.planoLabel = data.limite === 5 ? 'gratuito' : 'premium';
+        });
     }
 
     abrirModal() {

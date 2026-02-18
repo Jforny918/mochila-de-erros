@@ -1,32 +1,53 @@
 
 <main>
-  <div class="topo">
-    <h1 class="titulo">Minhas Mochilas</h1>
+      <div class="topo-mochilas">
+        <div class="topo-header">
+          <div>
+            <h1>Minhas Mochilas</h1>
+            <span class="sub">
+              {{ usoPlano?.utilizadas }} de {{ usoPlano?.limite }} mochilas utilizadas
+            </span>
+          </div>
 
-    <button class="nova-mochila" (click)="abrirModal()">
-      + Nova Mochila
-    </button>
-  </div>
+          <button
+            class="nova-mochila"
+            [disabled]="usoPlano?.atingiuLimite"
+            (click)="abrirModal()">
+            + Nova Mochila
+          </button>
+        </div>
 
-  <app-criar-mochila-modal
-    *ngIf="modalAberto"
-    (fechar)="fecharModal()"
-    (criada)="onMochilaCriada()">
-  </app-criar-mochila-modal>
+        <div class="plano-info">
+          <span>Uso do plano {{ planoLabel }}</span>
+          <span>{{ usoPlano?.utilizadas }}/{{ usoPlano?.limite }}</span>
+        </div>
 
-<div *ngIf="carregando" class="estado">
-  Carregando mochilas...
-</div>
+        <div class="barra">
+          <div
+            class="barra-preenchida"
+            [style.width.%]="usoPlano?.percentual">
+          </div>
+        </div>
 
-<div *ngIf="!carregando && mochilas.length === 0" class="estado">
-  Mochilas não carregadas
-</div>
+        <app-criar-mochila-modal
+          *ngIf="modalAberto"
+          (fechar)="fecharModal()"
+          (criada)="onMochilaCriada()">
+        </app-criar-mochila-modal>
+      </div>
+      <div *ngIf="carregando" class="estado">
+        Carregando mochilas...
+      </div>
 
-<div class="grid" *ngIf="!carregando && mochilas.length > 0">
-  <app-mochila-card
-    *ngFor="let mochila of mochilas"
-    [card]="mochila">
-  </app-mochila-card>
-</div>
-<app-rodape></app-rodape>
+      <div *ngIf="!carregando && mochilas.length === 0" class="estado">
+        Mochilas não carregadas
+      </div>
+
+      <div class="grid" *ngIf="!carregando && mochilas.length > 0">
+        <app-mochila-card
+          *ngFor="let mochila of mochilas"
+          [card]="mochila">
+        </app-mochila-card>
+      </div>
+      <app-rodape></app-rodape>
 </main>
