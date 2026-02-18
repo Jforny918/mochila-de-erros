@@ -3,11 +3,12 @@ import { MochilaCard } from '../../../models/mochilas-card.model';
 import { MochilasService } from '../../../services/mochilas.service';
 import { MochilaCardComponent } from '../../../components/mochila-card/mochila-card';
 import { CommonModule } from '@angular/common';
+import { Rodape } from '../../../components/rodape/rodape';
 
 @Component({
   selector: 'app-mochilas-page',
   imports: [MochilaCardComponent,
-    CommonModule
+    CommonModule, Rodape
   ],
   templateUrl: './mochilas-page.html',
   styleUrl: './mochilas-page.scss',
