@@ -1,0 +1,19 @@
+<main>
+    <h1 class="titulo">Questões</h1>
+
+    <div *ngIf="carregando" class="estado">
+        Carregando questões...
+    </div>
+
+    <div *ngIf="!carregando && questoes.length === 0" class="estado vazio">
+        <p>Nenhuma questão cadastrada nesta mochila.</p>
+        <small>Crie uma nova questão para começar.</small>
+    </div>
+
+    <div class="grid" *ngIf="!carregando && questoes.length">
+        <app-questao-card
+          *ngFor="let q of questoes"
+          [questao]="q"
+        />
+    </div>
+</main>

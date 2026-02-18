@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" (click)="abrirMochila()">
   <div class="topo" [style.background]="card.cor"></div>
 
   <div class="conteudo">
@@ -30,7 +30,7 @@
       {{ card.periodoRevisao }}
     </div>
 
-    <button class="acao" [style.background]="card.cor" [disabled]="card.bloqueada">
+    <button class="acao" [style.background]="card.cor" (click)="$event.stopPropagation()">
       ▶ Estudar
     </button>
   </div>

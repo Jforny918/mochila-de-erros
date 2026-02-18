@@ -1,0 +1,25 @@
+main {
+  padding: 3rem;
+}
+
+.titulo {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.2rem;
+}
+
+.estado {
+  padding: 2rem;
+  color: #6b7280;
+}
+
+.estado.vazio {
+  text-align: center;
+  background: #f9fafb;
+  border-radius: 12px;
+}

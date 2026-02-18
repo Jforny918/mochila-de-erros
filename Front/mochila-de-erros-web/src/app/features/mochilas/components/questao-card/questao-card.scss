@@ -1,0 +1,51 @@
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card.bloqueada {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.enunciado {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 10px;
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.status.pendente {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.status.dominada {
+  background: #d1fae5;
+  color: #047857;
+}

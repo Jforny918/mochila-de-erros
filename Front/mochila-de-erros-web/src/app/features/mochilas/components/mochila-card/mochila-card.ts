@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MochilaCard } from '../../models/mochilas-card.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mochila-card',
@@ -10,5 +11,15 @@ import { MochilaCard } from '../../models/mochilas-card.model';
   styleUrls: ['./mochila-card.scss']
 })
 export class MochilaCardComponent {
-  @Input({ required: true }) card!: MochilaCard;
+  @Input() card!: MochilaCard;
+
+  constructor(private router: Router) {}
+
+  abrirMochila(){
+    this.router.navigate([
+      '/mochilas',
+      this.card.id,
+      'questoes'
+    ]);
+  }
 }

@@ -1,0 +1,15 @@
+<div class="card" [class.bloqueada]="questao.bloqueada">
+  <p class="enunciado">
+    {{ questao.enunciado }}
+  </p>
+
+  <div class="footer">
+    <span
+      class="status"
+      [class.pendente]="questao.status === 'Pendente'"
+      [class.dominada]="questao.status === 'Dominada'"
+    >
+      {{ questao.status }}
+    </span>
+  </div>
+</div>
