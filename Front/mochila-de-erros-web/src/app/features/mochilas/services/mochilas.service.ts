@@ -18,5 +18,9 @@ export class MochilasService {
             }
         );
     }
+
+    create(payload: any){
+        return this.http.post(this.api, payload);
+    }
   
 }

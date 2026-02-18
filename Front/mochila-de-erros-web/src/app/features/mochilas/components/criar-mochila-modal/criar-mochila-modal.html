@@ -1,0 +1,68 @@
+<div class="overlay">
+  <div class="modal">
+    <header class="modal-header">
+      <h2>Nova Mochila</h2>
+      <button class="fechar" (click)="fechar.emit()">×</button>
+    </header>
+
+    <form (ngSubmit)="criar()">
+
+      <div class="field">
+        <label>Nome da mochila <span>*</span></label>
+        <input [(ngModel)]="form.nome" name="nome" required />
+      </div>
+
+      <div class="field">
+        <label>Descrição</label>
+        <textarea [(ngModel)]="form.descricao" name="descricao"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Tags</label>
+
+        <div class="tags-input">
+          <input
+            [(ngModel)]="novaTag"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="Digite uma tag"
+          />
+          <button type="button" (click)="adicionarTag()">+</button>
+        </div>
+
+        <div class="tags">
+          <span *ngFor="let tag of form.tags">
+            {{ tag }}
+            <button type="button" (click)="removerTag(tag)">×</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Cor</label>
+        <div class="cores">
+          <span
+            *ngFor="let cor of cores"
+            [style.background]="cor"
+            [class.selecionada]="form.cor === cor"
+            (click)="form.cor = cor">
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Frequência de revisão</label>
+        <select [(ngModel)]="form.frequenciaRevisao" name="frequencia">
+          <option [ngValue]="1">Diariamente</option>
+          <option [ngValue]="2">Semanalmente</option>
+          <option [ngValue]="3">Quinzenalmente</option>
+          <option [ngValue]="4">Mensalmente</option>
+        </select>
+      </div>
+
+      <footer>
+        <button type="button" class="cancelar" (click)="fechar.emit()">Cancelar</button>
+        <button type="submit" class="confirmar">Criar mochila</button>
+      </footer>
+    </form>
+  </div>
+</div>

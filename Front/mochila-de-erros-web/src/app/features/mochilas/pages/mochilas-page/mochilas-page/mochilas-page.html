@@ -1,6 +1,18 @@
 
 <main>
-  <h1 class="titulo">Minhas Mochilas</h1>
+  <div class="topo">
+    <h1 class="titulo">Minhas Mochilas</h1>
+
+    <button class="nova-mochila" (click)="abrirModal()">
+      + Nova Mochila
+    </button>
+  </div>
+
+  <app-criar-mochila-modal
+    *ngIf="modalAberto"
+    (fechar)="fecharModal()"
+    (criada)="onMochilaCriada()">
+  </app-criar-mochila-modal>
 
 <div *ngIf="carregando" class="estado">
   Carregando mochilas...

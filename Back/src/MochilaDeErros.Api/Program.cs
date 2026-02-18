@@ -2,6 +2,7 @@ using MochilaDeErros.Application.UseCases.Mochilas;
 using MochilaDeErros.Infrastructure.DependencyInjection;
 using MochilaDeErros.Application.Interfaces.Repositories;
 using MochilaDeErros.Infrastructure.Repositories;
+using MochilaDeErros.Application.UseCases.Usuarios;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<GetMochilasByUserIdUseCase>();
 builder.Services.AddScoped<GetMochilaCardsByUserIdUseCase>();
 builder.Services.AddScoped<CreateQuestaoUseCase>();
+
+builder.Services.AddScoped<IUsuarioReadRepository, UsuarioReadRepository>();
+builder.Services.AddScoped<GetPlanoUsuarioUseCase>();
 
 builder.Services.AddInfrastructure(builder.Configuration);
 
