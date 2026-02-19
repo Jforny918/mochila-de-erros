@@ -1,7 +1,32 @@
 <div class="card" [class.bloqueada]="questao.bloqueada">
-  <p class="enunciado">
-    {{ questao.enunciado }}
-  </p>
+
+  <div class="header">
+    <p class="enunciado">
+      {{ questao.enunciado }}
+    </p>
+
+    <div class="icons">
+      <i
+        class="fa-regular fa-pen-to-square"
+        title="Editar"
+      ></i>
+      <i
+        class="fa-regular fa-trash-can"
+        title="Excluir"
+      ></i>
+    </div>
+  </div>
+
+  <div class="meta">
+    <span class="badge ia">Gerada por IA</span>
+    <span class="badge mochila"></span>
+    <span class="badge acertos">
+       acertos
+    </span>
+    <span class="tentativas">
+      tentativas
+    </span>
+  </div>
 
   <div class="footer">
     <span

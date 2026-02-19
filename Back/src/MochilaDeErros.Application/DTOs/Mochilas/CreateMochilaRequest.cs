@@ -4,7 +4,7 @@ namespace MochilaDeErros.Application.DTOs.Mochilas;
 
 public class CreateMochilaRequest
 {
-    public Guid UserId { get; set; } 
+    public Guid UsuarioId { get; set; } 
     
     public string Nome { get; set; } = null!;
     public string? Descricao { get; set; }

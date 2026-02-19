@@ -21,16 +21,27 @@ public class GetPlanoUsuarioUseCase
         if (usuario is null)
             throw new Exception("Usuário não encontrado.");
 
-        var limite = usuario.Plano == PlanoTipo.Gratuito
-            ? 5
-            : int.MaxValue;
+        int limite = usuario.Plano switch
+    {
+        PlanoTipo.Gratuito => 5,
+        PlanoTipo.Premium => 20,
+        PlanoTipo.Empresarial => -1,
+        _ => 5
+    };
 
-        var utilizadas = usuario.Mochilas.Count;
+    int utilizadas = usuario.Mochilas.Count;
 
-        return new UsoPlanoDto
-        {
-            Limite = limite,
-            Utilizadas = utilizadas
-        };
+    double percentual = limite == -1
+        ? 0
+        : (double)utilizadas / limite * 100;
+
+    return new UsoPlanoDto
+    {
+        Limite = limite,
+        Utilizadas = utilizadas,
+        Percentual = percentual,
+        AtingiuLimite = limite != -1 && utilizadas >= limite,
+        Plano = usuario.Plano.ToString()
+    };
     }
 }

@@ -57,7 +57,7 @@ export class MochilasPage {
         .getUsoPlano(this.userId)
         .subscribe(data => {
           this.usoPlano = data;
-          this.planoLabel = data.limite === 5 ? 'gratuito' : 'premium';
+          this.planoLabel = data.plano.toLowerCase();
         });
     }
 
@@ -72,5 +72,6 @@ export class MochilasPage {
     onMochilaCriada() {
       this.fecharModal();
       this.carregarMochilas();
+      this.carregarUsoPlano();
     }
 }
