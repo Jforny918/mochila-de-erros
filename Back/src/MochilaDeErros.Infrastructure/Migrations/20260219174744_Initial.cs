@@ -1,0 +1,146 @@
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace MochilaDeErros.Infrastructure.Migrations
+{
+    /// <inheritdoc />
+    public partial class Initial : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "Questoes",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MochilaId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Enunciado = table.Column<string>(type: "TEXT", nullable: false),
+                    ImagemUrl = table.Column<string>(type: "TEXT", nullable: true),
+                    Explicacao = table.Column<string>(type: "TEXT", nullable: true),
+                    Origem = table.Column<string>(type: "TEXT", nullable: true),
+                    Status = table.Column<int>(type: "INTEGER", nullable: false),
+                    BloqueadaAte = table.Column<DateTime>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Questoes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Nome = table.Column<string>(type: "TEXT", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    Plano = table.Column<int>(type: "INTEGER", nullable: false),
+                    DataCriacao = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Alternativas",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    QuestaoId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Letra = table.Column<string>(type: "TEXT", nullable: false),
+                    Texto = table.Column<string>(type: "TEXT", nullable: false),
+                    EhCorreta = table.Column<bool>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Alternativas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Alternativas_Questoes_QuestaoId",
+                        column: x => x.QuestaoId,
+                        principalTable: "Questoes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Mochilas",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    UsuarioId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Nome = table.Column<string>(type: "TEXT", nullable: false),
+                    Descricao = table.Column<string>(type: "TEXT", nullable: true),
+                    Cor = table.Column<string>(type: "TEXT", nullable: false),
+                    FrequenciaRevisao = table.Column<int>(type: "INTEGER", nullable: false),
+                    CriadaEm = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    Ativa = table.Column<bool>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Mochilas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Mochilas_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MochilaTags",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MochilaId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Nome = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MochilaTags", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MochilaTags_Mochilas_MochilaId",
+                        column: x => x.MochilaId,
+                        principalTable: "Mochilas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Alternativas_QuestaoId",
+                table: "Alternativas",
+                column: "QuestaoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Mochilas_UsuarioId",
+                table: "Mochilas",
+                column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MochilaTags_MochilaId",
+                table: "MochilaTags",
+                column: "MochilaId");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "Alternativas");
+
+            migrationBuilder.DropTable(
+                name: "MochilaTags");
+
+            migrationBuilder.DropTable(
+                name: "Questoes");
+
+            migrationBuilder.DropTable(
+                name: "Mochilas");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
+        }
+    }
+}

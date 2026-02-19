@@ -31,7 +31,7 @@ export class MochilasPage {
     planoLabel = 'gratuito';
 
     // temporário, depois substituir por ID do usuário logado
-    private userId = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
+    private userId = 'ac90a4ed-a332-453d-870a-44867cab2ff0';
 
     constructor(private mochilasService: MochilasService, private usuarioService: UsuarioService) {}
 

@@ -1,1 +1,77 @@
-<p>criar-questao-modal works!</p>
+<div class="modal-overlay">
+
+  <div class="modal">
+
+    <div class="modal-header">
+      <h2>Nova Questão</h2>
+      <p>Adicione uma questão que você errou para praticar</p>
+    </div>
+
+    <div class="modal-body">
+
+      <!-- ENUNCIADO -->
+      <div class="form-group">
+        <label>Enunciado da questão <span>*</span></label>
+        <textarea
+          placeholder="Digite o enunciado completo da questão...">
+        </textarea>
+      </div>
+
+      <!-- IMAGEM -->
+      <div class="form-group">
+        <label>Imagem (opcional)</label>
+
+        <div class="upload-area">
+          <span class="upload-icon">⬆</span>
+          <p>Clique para enviar imagem</p>
+          <input type="file" hidden>
+        </div>
+      </div>
+
+      <!-- ALTERNATIVAS -->
+      <div class="form-group">
+        <label>Alternativas <span>*</span></label>
+
+        <div class="alternativa" *ngFor="let letra of ['A','B','C','D','E']; let i = index">
+
+          <div class="badge">
+            {{ letra }}
+          </div>
+
+          <input
+            type="text"
+            placeholder="Alternativa {{ letra }}" />
+
+          <button type="button" class="marcar-btn">
+            Marcar
+          </button>
+
+        </div>
+      </div>
+
+      <!-- EXPLICAÇÃO -->
+      <div class="form-group">
+        <label>Explicação (opcional)</label>
+        <textarea
+          placeholder="Explique por que esta é a resposta correta...">
+        </textarea>
+      </div>
+
+      <!-- ORIGEM -->
+      <div class="form-group">
+        <label>Origem (opcional)</label>
+        <input
+          type="text"
+          placeholder="Ex: ENEM 2023, Simulado FGV..." />
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button class="cancelar" (click)="fechar.emit()">Cancelar</button>
+      <button class="salvar">Salvar</button>
+    </div>
+
+  </div>
+
+</div>
