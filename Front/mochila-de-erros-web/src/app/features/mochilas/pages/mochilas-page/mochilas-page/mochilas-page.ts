@@ -27,7 +27,7 @@ export class MochilasPage {
 
     modalAberto = false;
 
-    usoPlano?: UsoPlano;
+    usoPlano: UsoPlano | null = null;
     planoLabel = 'gratuito';
 
     // temporário, depois substituir por ID do usuário logado
