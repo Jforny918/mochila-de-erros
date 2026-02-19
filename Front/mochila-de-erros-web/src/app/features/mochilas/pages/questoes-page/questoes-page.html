@@ -1,19 +1,63 @@
-<main>
-    <h1 class="titulo">Questões</h1>
+<main class="pagina">
+
+  <div class="page-header">
+    <div class="left">
+      <button class="voltar" title="Voltar" (click)="voltar()">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+
+      <div class="titulo-area">
+        <div class="titulo">
+          <i class="fa-regular fa-bookmark"></i>
+          <h1>Questões</h1>
+        </div>
+
+        <small class="resumo">
+          questões •pendentes
+        </small>
+      </div>
+    </div>
+
+    <div class="acoes">
+      <button class="btn outline">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        Gerar com IA
+      </button>
+
+      <button class="btn primary" (click)="abrirModal()">
+        <i class="fa-solid fa-plus"></i>
+        Nova Questão
+      </button>
+    </div>
+  </div>
+
+  <section class="secao">
+    <h2 class="secao-titulo">
+      <span class="dot"></span>
+      Pendentes ()
+    </h2>
+
+    <app-criar-questao-modal
+        *ngIf="modalAberto"
+        (fechar)="fecharModal()"
+        (criado)="carregarQuestoes()">
+    </app-criar-questao-modal>
 
     <div *ngIf="carregando" class="estado">
-        Carregando questões...
+      Carregando questões...
     </div>
 
     <div *ngIf="!carregando && questoes.length === 0" class="estado vazio">
-        <p>Nenhuma questão cadastrada nesta mochila.</p>
-        <small>Crie uma nova questão para começar.</small>
+      <p>Nenhuma questão cadastrada nesta mochila.</p>
+      <small>Crie uma nova questão para começar.</small>
     </div>
 
     <div class="grid" *ngIf="!carregando && questoes.length">
-        <app-questao-card
-          *ngFor="let q of questoes"
-          [questao]="q"
-        />
+      <app-questao-card
+        *ngFor="let q of questoes"
+        [questao]="q"
+      />
     </div>
+  </section>
+
 </main>

@@ -25,7 +25,7 @@ public class GetPlanoUsuarioUseCase
     {
         PlanoTipo.Gratuito => 5,
         PlanoTipo.Premium => 20,
-        PlanoTipo.Empresarial => -1, // sem limite
+        PlanoTipo.Empresarial => -1,
         _ => 5
     };
 

@@ -1,17 +1,17 @@
 .card {
-  background: #fff;
+  background: #ffffff;
   border-radius: 14px;
-  padding: 1rem;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  padding: 1rem 1.25rem;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+  gap: 0.6rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
 }
 
 .card.bloqueada {
@@ -19,11 +19,77 @@
   cursor: not-allowed;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 .enunciado {
   font-size: 0.95rem;
-  color: #333;
-  margin-bottom: 0.8rem;
+  color: #111827;
   line-height: 1.4;
+  margin: 0;
+  max-width: 85%;
+}
+
+.icons {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.icons i {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.icons i:hover {
+  transform: translateY(-2px);
+}
+
+.icons .fa-pen-to-square:hover {
+  color: #6366f1;
+}
+
+.icons .fa-trash-can:hover {
+  color: #ef4444;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+}
+
+.badge {
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge.ia {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.badge.mochila {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.badge.acertos {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.tentativas {
+  color: #9ca3af;
+  font-weight: 500;
 }
 
 .footer {
@@ -32,12 +98,10 @@
 }
 
 .status {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.25rem 0.6rem;
-  border-radius: 10px;
-  background: #e5e7eb;
-  color: #374151;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
 }
 
 .status.pendente {

@@ -3,6 +3,7 @@ using MochilaDeErros.Infrastructure.DependencyInjection;
 using MochilaDeErros.Application.Interfaces.Repositories.Write;
 using MochilaDeErros.Infrastructure.Repositories;
 using MochilaDeErros.Application.UseCases.Usuarios;
+using MochilaDeErros.Application.DTOs.Mochilas;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,7 @@ builder.Services.AddScoped<IUsuarioReadRepository, UsuarioReadRepository>();
 builder.Services.AddScoped<GetPlanoUsuarioUseCase>();
 builder.Services.AddScoped<IUsuarioWriteRepository, UsuarioWriteRepository>();
 builder.Services.AddScoped<CreateUsuarioUseCase>();
+builder.Services.AddScoped<CreateMochilaRequest>();
 
 
 builder.Services.AddInfrastructure(builder.Configuration);

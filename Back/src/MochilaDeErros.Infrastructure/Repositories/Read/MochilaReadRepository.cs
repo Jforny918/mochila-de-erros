@@ -20,7 +20,7 @@ public class MochilaReadRepository : IMochilaReadRepository
         
         var mochilas = await _context.Mochilas
             .Include(m => m.Tags)
-            .Where(m => m.UserId == userId && m.Ativa)
+            .Where(m => m.UsuarioId == userId && m.Ativa)
             .ToListAsync();
 
         var mochilaIds = mochilas.Select(m => m.Id).ToList();
@@ -76,6 +76,6 @@ public class MochilaReadRepository : IMochilaReadRepository
     public async Task<bool> ExistsByUserAsync(Guid userId, Guid mochilaId)
     {
         return await _context.Mochilas.AsNoTracking()
-            .AnyAsync(m => m.Id == mochilaId && m.UserId == userId && m.Ativa);
+            .AnyAsync(m => m.Id == mochilaId && m.UsuarioId == userId && m.Ativa);
     }
 }

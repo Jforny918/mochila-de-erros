@@ -58,7 +58,9 @@ namespace MochilaDeErros.Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CriadaEm")
-                        .HasColumnType("TEXT");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("Descricao")
                         .HasColumnType("TEXT");
@@ -70,10 +72,7 @@ namespace MochilaDeErros.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("UsuarioId")
+                    b.Property<Guid>("UsuarioId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -143,7 +142,9 @@ namespace MochilaDeErros.Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("TEXT");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -172,9 +173,13 @@ namespace MochilaDeErros.Infrastructure.Migrations
 
             modelBuilder.Entity("MochilaDeErros.Domain.Entities.Mochila", b =>
                 {
-                    b.HasOne("MochilaDeErros.Domain.Entities.Usuario", null)
+                    b.HasOne("MochilaDeErros.Domain.Entities.Usuario", "Usuario")
                         .WithMany("Mochilas")
-                        .HasForeignKey("UsuarioId");
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("MochilaDeErros.Domain.Entities.MochilaTag", b =>

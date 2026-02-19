@@ -58,7 +58,6 @@ export class MochilasPage {
         .subscribe(data => {
           this.usoPlano = data;
           this.planoLabel = data.plano.toLowerCase();
-
         });
     }
 

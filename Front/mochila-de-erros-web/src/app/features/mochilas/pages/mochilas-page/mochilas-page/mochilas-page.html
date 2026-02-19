@@ -5,7 +5,13 @@
           <div>
             <h1>Minhas Mochilas</h1>
             <span class="sub">
-              {{ usoPlano?.utilizadas }} de {{ usoPlano?.limite }} mochilas utilizadas
+              <ng-container *ngIf="usoPlano?.limite !== 2147483647; else ilimitado">
+                {{ usoPlano?.utilizadas }} de {{ usoPlano?.limite }} mochilas utilizadas
+              </ng-container>
+
+              <ng-template #ilimitado>
+                {{ usoPlano?.utilizadas }} mochilas utilizadas (ilimitado)
+              </ng-template>
             </span>
           </div>
 
@@ -23,14 +29,16 @@
         </div>
 
         <div *ngIf="usoPlano as plano">
-          <div class="barra">
-            <div
-              class="barra-preenchida"
-              [style.width.%]="plano.percentual"
-              [ngClass]="{
-                'warning': plano.percentual >= 80 && plano.percentual < 100,
-                'danger': plano.percentual >= 100
-              }">
+          <div *ngIf="usoPlano && usoPlano.limite !== 2147483647">
+            <div class="barra">
+              <div
+                class="barra-preenchida"
+                [style.width.%]="usoPlano.percentual"
+                [ngClass]="{
+                  'warning': usoPlano.percentual >= 80 && usoPlano.percentual < 100,
+                  'danger': usoPlano.percentual >= 100
+                }">
+              </div>
             </div>
           </div>
         </div>

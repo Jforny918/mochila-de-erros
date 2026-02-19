@@ -21,7 +21,7 @@ public class QuestaoReadRepository : IQuestaoReadRepository
                 q.MochilaId == mochilaId &&
                 _context.Mochilas.Any(m => 
                     m.Id == mochilaId &&
-                    m.UserId == userId &&
+                    m.UsuarioId == userId &&
                     m.Ativa
                     )
                 )

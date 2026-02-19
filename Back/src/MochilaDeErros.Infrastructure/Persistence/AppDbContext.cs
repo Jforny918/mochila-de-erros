@@ -16,29 +16,30 @@ public class AppDbContext : DbContext
     public DbSet<Alternativa> Alternativas => Set<Alternativa>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Usuario>(builder =>
     {
-        modelBuilder.Entity<Questao>(builder =>
-    {
-        builder.HasKey(q => q.Id);
+        builder.HasKey(u => u.Id);
 
-        builder.Property(q => q.MochilaId)
-               .IsRequired();
+        builder.Property(u => u.DataCriacao)
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-        builder.HasMany(q => q.Alternativas)
-               .WithOne()
-               .HasForeignKey(a => a.QuestaoId)
-               .OnDelete(DeleteBehavior.Cascade);
+        builder.HasMany(u => u.Mochilas)
+            .WithOne(m => m.Usuario)
+            .HasForeignKey(m => m.UsuarioId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
     });
 
-        modelBuilder.Entity<Alternativa>(builder =>
+    modelBuilder.Entity<Mochila>(builder =>
     {
-        builder.HasKey(a => a.Id);
+        builder.HasKey(m => m.Id);
+
+        builder.Property(m => m.CriadaEm)
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
     });
 
-        modelBuilder.Entity<Usuario>()
-        .Property(u => u.Plano)
-        .HasConversion<int>();
+    base.OnModelCreating(modelBuilder);
+}
 
-        base.OnModelCreating(modelBuilder);
-    }
 }
