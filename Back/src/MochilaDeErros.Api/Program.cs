@@ -1,6 +1,6 @@
 using MochilaDeErros.Application.UseCases.Mochilas;
 using MochilaDeErros.Infrastructure.DependencyInjection;
-using MochilaDeErros.Application.Interfaces.Repositories;
+using MochilaDeErros.Application.Interfaces.Repositories.Write;
 using MochilaDeErros.Infrastructure.Repositories;
 using MochilaDeErros.Application.UseCases.Usuarios;
 
@@ -15,6 +15,9 @@ builder.Services.AddScoped<GetMochilaCardsByUserIdUseCase>();
 builder.Services.AddScoped<CreateQuestaoUseCase>();
 builder.Services.AddScoped<IUsuarioReadRepository, UsuarioReadRepository>();
 builder.Services.AddScoped<GetPlanoUsuarioUseCase>();
+builder.Services.AddScoped<IUsuarioWriteRepository, UsuarioWriteRepository>();
+builder.Services.AddScoped<CreateUsuarioUseCase>();
+
 
 builder.Services.AddInfrastructure(builder.Configuration);
 

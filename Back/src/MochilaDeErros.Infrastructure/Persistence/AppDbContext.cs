@@ -30,9 +30,15 @@ public class AppDbContext : DbContext
                .OnDelete(DeleteBehavior.Cascade);
     });
 
-    modelBuilder.Entity<Alternativa>(builder =>
+        modelBuilder.Entity<Alternativa>(builder =>
     {
         builder.HasKey(a => a.Id);
     });
+
+        modelBuilder.Entity<Usuario>()
+        .Property(u => u.Plano)
+        .HasConversion<int>();
+
+        base.OnModelCreating(modelBuilder);
     }
 }
